@@ -7,12 +7,13 @@ using UnityEngine;
 public class Example : MonoBehaviour
 {
     [Header("References")]
-    private CharacterController controller;
-    private InputManager inputManager;
+    private CharacterController _controller;
+    private InputManager _inputManager;
+    private Transform _cameraTransform;
 
     [Header("PlayerData")]
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
+    private Vector3 _playerVelocity;
+    private bool _groundedPlayer;
 
     //# Change stats to scriptable object stats for powerups?
     [Header("PlayerStats")]
@@ -22,35 +23,34 @@ public class Example : MonoBehaviour
 
     private void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
-        inputManager = InputManager.Instance;
+        _controller = gameObject.GetComponent<CharacterController>();
+        _inputManager = InputManager.Instance;
+        _cameraTransform = Camera.main.transform;
     }
 
     private void Update()
     {
-        groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        _groundedPlayer = _controller.isGrounded;
+        if (_groundedPlayer && _playerVelocity.y < 0)
         {
-            playerVelocity.y = 0f;
+            _playerVelocity.y = 0f;
         }
-
         
-        Vector2 moveValue = inputManager.GetMoveVector();
+        Vector2 moveValue = _inputManager.GetMoveVector();
         Vector3 moveVector = new Vector3(moveValue.x, 0f, moveValue.y);
-        controller.Move(moveVector * Time.deltaTime * playerSpeed);
+        moveVector = _cameraTransform.forward * moveVector.z + _cameraTransform.right * moveVector.x;
+        moveVector.y = 0f;
 
-        if (moveVector != Vector3.zero)
-        {
-            gameObject.transform.forward = moveVector;
-        }
+        _controller.Move(moveVector * Time.deltaTime * playerSpeed);
+
 
         // Changes the height position of the player..
-        if (inputManager.IsJumpPressed() && groundedPlayer)
+        if (_inputManager.IsJumpPressed() && _groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            _playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        _playerVelocity.y += gravityValue * Time.deltaTime;
+        _controller.Move(_playerVelocity * Time.deltaTime);
     }
 }

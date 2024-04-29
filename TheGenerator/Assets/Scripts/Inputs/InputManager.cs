@@ -27,8 +27,8 @@ public class InputManager : MonoBehaviour
         {
             _instance = this;
         }
-
         _playerActions = new PlayerActions();
+        Cursor.visible = false;
     }
 
     private void OnEnable()
