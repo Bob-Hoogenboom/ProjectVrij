@@ -55,5 +55,11 @@ public class InputManager : MonoBehaviour
     {
         return _playerActions.Movement.Look.ReadValue<Vector2>();
     }
+
+    public bool IsPickUpPressed()
+    {
+        //# is being Held?
+        return _playerActions.Movement.Interact.triggered;
+    }
     #endregion
 }
