@@ -8,12 +8,14 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField] private Transform player;
 
     [Header("Timer")]
-    [SerializeField] private Vector2 coolDownRange = new Vector2(45, 75);
-    private float _coolDownTimer;
-    private float _currentCoolDownTime;
-    private bool _isCountingDown = true;
+    [Tooltip("The searchLight Timer is determined by a random value between these 2 values, X is lowest, Y is highest")]
+    [SerializeField] private Vector2 searchLightTimerRange = new Vector2(45, 75);
+    private float _searchLightTimer;
+    private float _currentSearchLightTimer;
+    private bool _lightIsActive = false;
 
     [Space]
+    [Tooltip("This timer determines how loing the player has to hide when the light is shun oppon them")]
     [SerializeField]private float checkTimer = 5f;
     private float _currentCheckTimer;
 
@@ -21,10 +23,17 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField] private GameObject searchLight;
     private RaycastHit _hit;
 
+
     private void Start()
     {
-        _coolDownTimer = RandomFloat(coolDownRange.x, coolDownRange.y);
-        _currentCoolDownTime = _coolDownTimer;
+        //Set SearchLight Timer
+        _searchLightTimer = RandomFloat(searchLightTimerRange.x, searchLightTimerRange.y);
+        _currentSearchLightTimer = _searchLightTimer;
+
+        //Set Check Timer
+        _currentCheckTimer = checkTimer;
+
+        //Player Reference
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (player == null)
         {
@@ -35,13 +44,13 @@ public class TowerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (_isCountingDown)
+        if (!_lightIsActive)
         {
-            _currentCoolDownTime -= Time.deltaTime;
+            _currentSearchLightTimer -= Time.deltaTime;
             
         }
 
-        if (_currentCoolDownTime <= 0f)
+        if (_currentSearchLightTimer <= 0f)
         {
             ActivateLight();
         }
@@ -49,7 +58,8 @@ public class TowerBehaviour : MonoBehaviour
 
     private void ActivateLight()
     {
-        _isCountingDown = false;
+        searchLight.SetActive(true);
+        _lightIsActive = true;
         searchLight.transform.LookAt(player);
         
         //timer till player checked
@@ -66,6 +76,7 @@ public class TowerBehaviour : MonoBehaviour
                 if (_hit.collider.gameObject.CompareTag("Player"))
                 {
                     Debug.Log("Found YA!");
+                    DeactivateLight(); // for debugging purpose only, should be replaced with a death or restart function;
                 }
                 else 
                 {
@@ -74,8 +85,12 @@ public class TowerBehaviour : MonoBehaviour
                 }
             }
 
-            Debug.Log("No ObjectHit");
-            DeactivateLight();
+            //failsafe
+            if (!_lightIsActive) 
+            {
+                DeactivateLight();
+            }
+            else { return; }
         }
 
 
@@ -84,11 +99,13 @@ public class TowerBehaviour : MonoBehaviour
     private void DeactivateLight()
     {
         //deactivate light
-        //reset cooldown timer
-        _coolDownTimer = RandomFloat(coolDownRange.x, coolDownRange.y); // new random value
-        _currentCoolDownTime = _coolDownTimer; 
+        searchLight.SetActive(false);
 
-        _isCountingDown = true;
+        //reset cooldown timer
+        _searchLightTimer = RandomFloat(searchLightTimerRange.x, searchLightTimerRange.y); // new random value for the 'SearchLight' Timer
+        _currentSearchLightTimer = _searchLightTimer;
+
+        _lightIsActive = false;
         //reset check timer
         _currentCheckTimer = checkTimer;
     }
