@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TowerBehaviour : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform player;
 
-    [Header("Timer")]
+    [Header("Timers")]
     [Tooltip("The searchLight Timer is determined by a random value between these 2 values, X is lowest, Y is highest")]
     [SerializeField] private Vector2 searchLightTimerRange = new Vector2(45, 75);
     private float _searchLightTimer;
@@ -21,7 +22,11 @@ public class TowerBehaviour : MonoBehaviour
 
     [Header("Detection")]
     [SerializeField] private GameObject searchLight;
+    [SerializeField] private GameObject checkOrigin;
     private RaycastHit _hit;
+
+    [Header("Effects")]
+    public UnityEvent onSearchLightActivated;
 
 
     private void Start()
@@ -58,9 +63,16 @@ public class TowerBehaviour : MonoBehaviour
 
     private void ActivateLight()
     {
+        if (!_lightIsActive) 
+        {
+            onSearchLightActivated.Invoke();
+        }
+
         searchLight.SetActive(true);
         _lightIsActive = true;
-        searchLight.transform.LookAt(player);
+
+        Vector3 playerPos = new Vector3(player.position.x, player.position.y + 5 , player.position.z);
+        searchLight.transform.position = playerPos;
         
         //timer till player checked
         _currentCheckTimer -= Time.deltaTime;
@@ -68,9 +80,9 @@ public class TowerBehaviour : MonoBehaviour
         //player checked found? yes, event! : no, deactivate light;
         if (_currentCheckTimer <= 0f) 
         {
-            Debug.DrawLine(searchLight.transform.position, player.position, Color.magenta, 5f);
+            Debug.DrawLine(checkOrigin.transform.position, player.position, Color.magenta, 10f);
 
-            if (Physics.Raycast(searchLight.transform.position, (player.position - searchLight.transform.position).normalized, out _hit))
+            if (Physics.Raycast(checkOrigin.transform.position, (player.position - checkOrigin.transform.position).normalized, out _hit))
             {
                 Debug.Log(_hit.collider.gameObject.name);
                 if (_hit.collider.gameObject.CompareTag("Player"))
@@ -92,8 +104,6 @@ public class TowerBehaviour : MonoBehaviour
             }
             else { return; }
         }
-
-
     }
 
     private void DeactivateLight()
