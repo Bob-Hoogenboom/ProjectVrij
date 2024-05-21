@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class TowerBehaviour : MonoBehaviour
 {
@@ -20,13 +20,18 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField]private float checkTimer = 5f;
     private float _currentCheckTimer;
 
+    [Space]
+    [SerializeField] private float endOfGameTimer = 3f;
+
     [Header("Detection")]
     [SerializeField] private GameObject searchLight;
     [SerializeField] private GameObject checkOrigin;
+    [SerializeField] private GameObject SearchCone;
     private RaycastHit _hit;
 
     [Header("Effects")]
     public UnityEvent onSearchLightActivated;
+    public UnityEvent onPlayerFound;
 
 
     private void Start()
@@ -69,8 +74,10 @@ public class TowerBehaviour : MonoBehaviour
         }
 
         searchLight.SetActive(true);
+        SearchCone.SetActive(true);
         _lightIsActive = true;
 
+        SearchCone.transform.LookAt(player.transform);
         Vector3 playerPos = new Vector3(player.position.x, player.position.y + 5 , player.position.z);
         searchLight.transform.position = playerPos;
         
@@ -88,7 +95,9 @@ public class TowerBehaviour : MonoBehaviour
                 if (_hit.collider.gameObject.CompareTag("Player"))
                 {
                     Debug.Log("Found YA!");
-                    DeactivateLight(); // for debugging purpose only, should be replaced with a death or restart function;
+                    onPlayerFound.Invoke();
+                    StartCoroutine(PlayerFound());
+                    return;
                 }
                 else 
                 {
@@ -110,6 +119,7 @@ public class TowerBehaviour : MonoBehaviour
     {
         //deactivate light
         searchLight.SetActive(false);
+        SearchCone.SetActive(false);
 
         //reset cooldown timer
         _searchLightTimer = RandomFloat(searchLightTimerRange.x, searchLightTimerRange.y); // new random value for the 'SearchLight' Timer
@@ -120,6 +130,11 @@ public class TowerBehaviour : MonoBehaviour
         _currentCheckTimer = checkTimer;
     }
 
+    private IEnumerator PlayerFound()
+    {
+        yield return new WaitForSeconds(endOfGameTimer);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // restart the level
+    }
 
     private float RandomFloat(float a, float b)
     {
