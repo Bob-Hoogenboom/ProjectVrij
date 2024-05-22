@@ -20,6 +20,15 @@ public class PlayerInteract : MonoBehaviour
             Iinteractable interactOBJ = hit.collider.GetComponent<Iinteractable>();
             if (interactOBJ != null)
             {
+                // Activate Particle System
+                ParticleSystem interactParticleSystem = hit.collider.GetComponentInChildren<ParticleSystem>();
+                if (interactParticleSystem != null && !interactParticleSystem.isPlaying)
+                {
+                    interactParticleSystem.Play();
+                }
+
+                //Deactivate Particle System
+
                 Debug.Log("YOU FOUND ME!");
                 //Found! script within the object with Iinteractable present
                 if (_inputManager.IsPickUpPressed())
