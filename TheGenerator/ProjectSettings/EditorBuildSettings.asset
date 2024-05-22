@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final/LabyrinthDemo.unity
     guid: 385907df266f6fb4185031d1de62ff9d
+  - enabled: 1
+    path: Assets/Scenes/Final/Labyrint+Flair.unity
+    guid: 229c9c0f37d77b8409919f5f8521604e
   m_configObjects: {}
