@@ -27487,7 +27487,7 @@ MonoBehaviour:
   m_IsGlobal: 0
   priority: 0
   blendDistance: 130
-  weight: 0.626
+  weight: 0.55
   sharedProfile: {fileID: 11400000, guid: e5cec591310a5b14594d40c224dfeaa5, type: 2}
 --- !u!65 &1977992086
 BoxCollider:
