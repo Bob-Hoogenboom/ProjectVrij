@@ -20,9 +20,6 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField]private float checkTimer = 5f;
     private float _currentCheckTimer;
 
-    [Space]
-    [SerializeField] private float endOfGameTimer = 3f;
-
     [Header("Detection")]
     [SerializeField] private GameObject searchLight;
     [SerializeField] private GameObject checkOrigin;
@@ -96,7 +93,6 @@ public class TowerBehaviour : MonoBehaviour
                 {
                     Debug.Log("Found YA!");
                     onPlayerFound.Invoke();
-                    StartCoroutine(PlayerFound());
                     return;
                 }
                 else 
@@ -128,12 +124,6 @@ public class TowerBehaviour : MonoBehaviour
         _lightIsActive = false;
         //reset check timer
         _currentCheckTimer = checkTimer;
-    }
-
-    private IEnumerator PlayerFound()
-    {
-        yield return new WaitForSeconds(endOfGameTimer);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // restart the level
     }
 
     private float RandomFloat(float a, float b)
