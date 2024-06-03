@@ -23,7 +23,8 @@ public class TowerBehaviour : MonoBehaviour
     [Header("Detection")]
     [SerializeField] private GameObject searchLight;
     [SerializeField] private GameObject checkOrigin;
-    [SerializeField] private GameObject SearchCone;
+    [SerializeField] private Transform searchLaserOrigin;
+    [SerializeField] private LineRenderer searchLaser;
     private RaycastHit _hit;
 
     [Header("Effects")]
@@ -68,15 +69,17 @@ public class TowerBehaviour : MonoBehaviour
         if (!_lightIsActive) 
         {
             onSearchLightActivated.Invoke();
+            searchLaser.SetPosition(0, searchLaserOrigin.transform.position);
         }
 
+
         searchLight.SetActive(true);
-        SearchCone.SetActive(true);
+        searchLaserOrigin.gameObject.SetActive(true);
         _lightIsActive = true;
 
-        SearchCone.transform.LookAt(player.transform);
-        Vector3 playerPos = new Vector3(player.position.x, player.position.y + 5 , player.position.z);
-        searchLight.transform.position = playerPos;
+        Vector3 lightPosition = new Vector3(player.position.x, player.position.y +5, player.position.z);
+        searchLaser.SetPosition(1, player.position);
+        searchLight.transform.position = lightPosition;
         
         //timer till player checked
         _currentCheckTimer -= Time.deltaTime;
@@ -115,7 +118,7 @@ public class TowerBehaviour : MonoBehaviour
     {
         //deactivate light
         searchLight.SetActive(false);
-        SearchCone.SetActive(false);
+        searchLaserOrigin.gameObject.SetActive(false);
 
         //reset cooldown timer
         _searchLightTimer = RandomFloat(searchLightTimerRange.x, searchLightTimerRange.y); // new random value for the 'SearchLight' Timer

@@ -8,13 +8,13 @@ public class InputManager : MonoBehaviour
 {
     private PlayerActions _playerActions;
 
-    private static InputManager _instance;   
-    public static InputManager Instance 
-    {  
-        get 
-        { 
-            return _instance; 
-        } 
+    private static InputManager _instance;
+    public static InputManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
     }
 
     private void Awake()
@@ -38,7 +38,7 @@ public class InputManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerActions.Disable();   
+        _playerActions.Disable();
     }
 
     #region HelperFunctions
@@ -61,5 +61,12 @@ public class InputManager : MonoBehaviour
         //# is being Held?
         return _playerActions.Movement.Interact.triggered;
     }
+
+    public bool IsCrouchedPressed()
+    {
+        return _playerActions.Movement.Crouch.triggered;
+    }
+
+
     #endregion
 }
