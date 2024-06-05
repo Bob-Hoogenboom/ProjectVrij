@@ -1,8 +1,5 @@
-using System.Collections;
-using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class TowerBehaviour : MonoBehaviour
 {
@@ -15,7 +12,7 @@ public class TowerBehaviour : MonoBehaviour
     [SerializeField] private Vector2 searchLightTimerRange = new Vector2(45, 75);
     private float _searchLightTimer;
     private float _currentSearchLightTimer;
-    private bool _lightIsActive = false;
+    [HideInInspector] public bool lightIsActive = false;
 
     [Space]
     [Tooltip("This timer determines how loing the player has to hide when the light is shun oppon them")]
@@ -23,11 +20,13 @@ public class TowerBehaviour : MonoBehaviour
     private float _currentCheckTimer;
 
     [Header("Detection")]
+    [HideInInspector] public bool playerInSight = false;
     [SerializeField] private GameObject searchLight;
     [SerializeField] private GameObject checkOrigin;
     [SerializeField] private Transform searchLaserOrigin;
     [SerializeField] private LineRenderer searchLaser;
     private RaycastHit _hit;
+
 
     [Header("Effects")]
     public UnityEvent onSearchLightActivated;
@@ -59,7 +58,7 @@ public class TowerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (!_lightIsActive)
+        if (!lightIsActive)
         {
             _currentSearchLightTimer -= Time.deltaTime;
             
@@ -73,7 +72,7 @@ public class TowerBehaviour : MonoBehaviour
 
     private void ActivateLight()
     {
-        if (!_lightIsActive) 
+        if (!lightIsActive) 
         {
             onSearchLightActivated.Invoke();
             searchLaser.SetPosition(0, searchLaserOrigin.transform.position);
@@ -82,7 +81,7 @@ public class TowerBehaviour : MonoBehaviour
 
         searchLight.SetActive(true);
         searchLaserOrigin.gameObject.SetActive(true);
-        _lightIsActive = true;
+        lightIsActive = true;
 
         Vector3 lightPosition = new Vector3(player.position.x, player.position.y +5, player.position.z);
         searchLaser.SetPosition(1, player.position);
@@ -92,29 +91,36 @@ public class TowerBehaviour : MonoBehaviour
         float downTimer = playerController._isChrouching ? Time.deltaTime : Time.deltaTime/2;
         _currentCheckTimer -= downTimer;
 
+        if (Physics.Raycast(checkOrigin.transform.position, (player.position - checkOrigin.transform.position).normalized, out _hit))
+        {
+            if (_hit.collider.gameObject.CompareTag("Player"))
+            {
+                Debug.DrawLine(checkOrigin.transform.position, player.position, Color.magenta, 3f);
+                playerInSight = true;
+            }
+            else
+            {
+                playerInSight = false;
+            }
+        }
+
         //player checked found? yes, event! : no, deactivate light;
         if (_currentCheckTimer <= 0f) 
         {
-            Debug.DrawLine(checkOrigin.transform.position, player.position, Color.magenta, 10f);
-
-            if (Physics.Raycast(checkOrigin.transform.position, (player.position - checkOrigin.transform.position).normalized, out _hit))
+            if (playerInSight)
             {
-                Debug.Log(_hit.collider.gameObject.name);
-                if (_hit.collider.gameObject.CompareTag("Player"))
-                {
-                    Debug.Log("Found YA!");
-                    onPlayerFound.Invoke();
-                    return;
-                }
-                else 
-                {
-                    Debug.Log("Where are youuu...");
-                    DeactivateLight();
-                }
+                Debug.Log("Found YA!");
+                onPlayerFound.Invoke();
+                return;
+            }
+            else 
+            {
+                Debug.Log("Where are youuu...");
+                DeactivateLight();
             }
 
             //failsafe
-            if (!_lightIsActive) 
+            if (!lightIsActive) 
             {
                 DeactivateLight();
             }
@@ -132,7 +138,7 @@ public class TowerBehaviour : MonoBehaviour
         _searchLightTimer = RandomFloat(searchLightTimerRange.x, searchLightTimerRange.y); // new random value for the 'SearchLight' Timer
         _currentSearchLightTimer = _searchLightTimer;
 
-        _lightIsActive = false;
+        lightIsActive = false;
         //reset check timer
         _currentCheckTimer = checkTimer;
     }
