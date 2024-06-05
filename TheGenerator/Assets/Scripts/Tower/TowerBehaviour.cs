@@ -93,6 +93,7 @@ public class TowerBehaviour : MonoBehaviour
 
         if (Physics.Raycast(checkOrigin.transform.position, (player.position - checkOrigin.transform.position).normalized, out _hit))
         {
+            Debug.Log(_hit.transform.gameObject.name);
             if (_hit.collider.gameObject.CompareTag("Player"))
             {
                 Debug.DrawLine(checkOrigin.transform.position, player.position, Color.magenta, 3f);

@@ -68,6 +68,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7d879c6065b1eee4aaec9a22dcd026b7, type: 2}
+    - target: {fileID: -603605124668940358, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -603605124668940358, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 203547780000771112, guid: 26de2f1161e22984b9660b6c464aff30,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -77,6 +87,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: traim_rails_piece
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708964251312850689, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708964251312850689, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502153872883211714, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502153872883211714, guid: 26de2f1161e22984b9660b6c464aff30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

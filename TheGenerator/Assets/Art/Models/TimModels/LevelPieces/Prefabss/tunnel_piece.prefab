@@ -58,6 +58,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5252060477763307395, guid: 7a01cff447d6e984fae57e80e60232e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5252060477763307395, guid: 7a01cff447d6e984fae57e80e60232e1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -3433781619229061254, guid: 7a01cff447d6e984fae57e80e60232e1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -72,6 +82,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tunnel_piece
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a01cff447d6e984fae57e80e60232e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a01cff447d6e984fae57e80e60232e1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136704589922034014, guid: 7a01cff447d6e984fae57e80e60232e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136704589922034014, guid: 7a01cff447d6e984fae57e80e60232e1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
