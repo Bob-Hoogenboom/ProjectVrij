@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class TowerBehaviour : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform player;
+    private PlayerController playerController;
 
     [Header("Timers")]
     [Tooltip("The searchLight Timer is determined by a random value between these 2 values, X is lowest, Y is highest")]
@@ -41,8 +43,13 @@ public class TowerBehaviour : MonoBehaviour
         //Set Check Timer
         _currentCheckTimer = checkTimer;
 
+        //Get acces to the player
+
         //Player Reference
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = player.gameObject.GetComponent<PlayerController>();
+        
+        //failSave
         if (player == null)
         {
             this.gameObject.SetActive(false);
@@ -80,9 +87,10 @@ public class TowerBehaviour : MonoBehaviour
         Vector3 lightPosition = new Vector3(player.position.x, player.position.y +5, player.position.z);
         searchLaser.SetPosition(1, player.position);
         searchLight.transform.position = lightPosition;
-        
-        //timer till player checked
-        _currentCheckTimer -= Time.deltaTime;
+
+        //If the player ios crouching the timer goes down slower as the tower has to search more
+        float downTimer = playerController._isChrouching ? Time.deltaTime : Time.deltaTime/2;
+        _currentCheckTimer -= downTimer;
 
         //player checked found? yes, event! : no, deactivate light;
         if (_currentCheckTimer <= 0f) 
