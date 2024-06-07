@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 /// source: https://www.youtube.com/watch?v=5n_hmqHdijM 
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
-public class Example : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     private CharacterController _controller;
@@ -22,19 +22,23 @@ public class Example : MonoBehaviour
     //# Change stats to scriptable object stats for powerups?
     [Header("PlayerStats")]
     [SerializeField] private float playerSpeed = 2.0f;
+    private float _currentSpeed;
     [Space]
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     [Space]
     [SerializeField] private float crouchHeight = .5f;
     [SerializeField] private float normalHeight = 1f;
-    private bool _isChrouching;
+
+    [HideInInspector] public bool _isChrouching;
 
     private void Start()
     {
         _controller = gameObject.GetComponent<CharacterController>();
         _inputManager = InputManager.Instance;
         _cameraTransform = Camera.main.transform;
+
+        _currentSpeed = playerSpeed;
     }
 
     private void Update()
@@ -64,7 +68,7 @@ public class Example : MonoBehaviour
         moveVector = _cameraTransform.forward * moveVector.z + _cameraTransform.right * moveVector.x;
         moveVector.y = 0f;
 
-        _controller.Move(moveVector * Time.deltaTime * playerSpeed);
+        _controller.Move(moveVector * Time.deltaTime * _currentSpeed);
     }
 
     //Makes the player do a little 'hop' when space bar is pressed
@@ -84,7 +88,8 @@ public class Example : MonoBehaviour
     {
         _isChrouching = !_isChrouching;
 
-        float playerHeight = _isChrouching ? crouchHeight : normalHeight; 
+        float playerHeight = _isChrouching ? crouchHeight : normalHeight;
+        _currentSpeed = _isChrouching ? playerSpeed / 2 : playerSpeed;
         
         if (!_isChrouching)
         {

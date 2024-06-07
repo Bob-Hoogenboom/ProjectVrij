@@ -58,6 +58,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7739189329204300329, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7739189329204300329, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -1439730007547781893, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -67,6 +87,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: chain_pole_fence
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d09dadd1610b2cd4e9e3581ba3e06e3e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -102,5 +132,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0254233, y: 1.0101691, z: 0.22204867}
-  m_Center: {x: -0.5008379, y: 0.50338024, z: -0.0025423318}
+  m_Size: {x: 1.4183068, y: 1.0101691, z: 0.22204867}
+  m_Center: {x: -0.6972797, y: 0.50338024, z: -0.0025423318}

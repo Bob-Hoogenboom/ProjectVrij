@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final/MainMenu.unity
     guid: 55eaf63dd1deca74bb3999b4c138f736
   - enabled: 1
-    path: Assets/Scenes/Final/Labyrint+Flair.unity
-    guid: 229c9c0f37d77b8409919f5f8521604e
+    path: Assets/Scenes/Final/LabyrintV2.unity
+    guid: 3c97f49fa33031c45b7d36073e68de3e
   m_configObjects: {}

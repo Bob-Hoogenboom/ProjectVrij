@@ -63,6 +63,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: white_wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cf876958847fda34898f73901c8110d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cf876958847fda34898f73901c8110d2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982268359962231674, guid: cf876958847fda34898f73901c8110d2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982268359962231674, guid: cf876958847fda34898f73901c8110d2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8540523010933903712, guid: cf876958847fda34898f73901c8110d2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
