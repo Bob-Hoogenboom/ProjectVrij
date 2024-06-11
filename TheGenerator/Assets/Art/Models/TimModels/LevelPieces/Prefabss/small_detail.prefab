@@ -68,6 +68,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: small_detail
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9cd551a60f95034dab2f37eb946c0f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9cd551a60f95034dab2f37eb946c0f7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

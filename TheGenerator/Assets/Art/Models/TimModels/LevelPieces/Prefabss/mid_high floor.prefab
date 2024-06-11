@@ -68,6 +68,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: mid_high floor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f885b52058f445d448b93c9e86d8c4c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f885b52058f445d448b93c9e86d8c4c0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

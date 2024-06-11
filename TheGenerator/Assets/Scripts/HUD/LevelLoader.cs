@@ -11,24 +11,26 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (anim != null)
-        {
-            StartCoroutine(Crossfade(SceneManager.GetActiveScene().buildIndex +1));
-        }
+        StartCoroutine(Crossfade(SceneManager.GetActiveScene().buildIndex +1));
     }
 
-    public void StartCrossFade(int sceneIndex)
+    public void RestartLevel()
     {
-        if (anim != null)
-        {
-            StartCoroutine(Crossfade(sceneIndex));
-        }
+        StartCoroutine(Crossfade(SceneManager.GetActiveScene().buildIndex));  
+    }
+
+    public void LoadMainMenu()
+    {
+        StartCoroutine(Crossfade(0));
     }
 
     IEnumerator Crossfade(int sceneIndex)
     {
         //play crossfade animation
-        anim.SetTrigger(_crossfadeTrigger);
+        if(anim != null)
+        {
+            anim.SetTrigger(_crossfadeTrigger);
+        }
         //wait
         yield return new WaitForSeconds(crossfadeTime);
 
