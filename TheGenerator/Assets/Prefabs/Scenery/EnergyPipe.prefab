@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2556509406443322943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3382696676341099469}
+  m_Layer: 0
+  m_Name: EnergyPipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3382696676341099469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556509406443322943}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2626654041628718382}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2592110286100157125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3382696676341099469}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.172
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyStripes
+      objectReference: {fileID: 0}
+    - target: {fileID: -7336381098201970849, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: -6093592463355912122, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49b16462b45a25547a0e70ea811db04f, type: 2}
+    - target: {fileID: -5679941666241095196, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: -3602947226490757721, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: -1806680513116206669, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49b16462b45a25547a0e70ea811db04f, type: 2}
+    - target: {fileID: -1599826595754709761, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyStripes
+      objectReference: {fileID: 0}
+    - target: {fileID: 458283123669593907, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 586045317092795319, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: PipeGRFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059546854928950740, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800250516343163423, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: TopCover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117450224406841558, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960158976996931061, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: a2490cf6e28cd5744951aa3e4496532b,
+        type: 3}
+      propertyPath: m_Name
+      value: PipeBody
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2490cf6e28cd5744951aa3e4496532b, type: 3}
+--- !u!4 &2626654041628718382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2490cf6e28cd5744951aa3e4496532b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2592110286100157125}
+  m_PrefabAsset: {fileID: 0}
