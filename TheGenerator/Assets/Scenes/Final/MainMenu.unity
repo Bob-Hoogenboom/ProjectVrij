@@ -1341,6 +1341,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 42426565}
     m_Modifications:
+    - target: {fileID: 1798457109240248840, guid: caba472b29e8f3547bb2ff3de2079cad,
+        type: 3}
+      propertyPath: crossfadeTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2076349359360917905, guid: caba472b29e8f3547bb2ff3de2079cad,
         type: 3}
       propertyPath: m_Name
