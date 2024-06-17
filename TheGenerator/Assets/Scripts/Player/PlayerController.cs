@@ -1,7 +1,4 @@
-using Unity.VisualScripting.Dependencies.Sqlite;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// Extremely Basic character controller for the player with new Unity Input System reference
