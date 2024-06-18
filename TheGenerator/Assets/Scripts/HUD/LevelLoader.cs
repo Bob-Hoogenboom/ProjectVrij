@@ -5,35 +5,34 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Animator anim;
-    [SerializeField] private float crossfadeTime;
 
-    private int _crossfadeTrigger = Animator.StringToHash("StartCrossfade");
-
-    public void LoadNextLevel()
+    private int _crossfadeOut = Animator.StringToHash("CrossfadeOut");
+    public void LoadNextLevel(int crossfadeTimer)
     {
-        StartCoroutine(Crossfade(SceneManager.GetActiveScene().buildIndex +1));
+        StartCoroutine(Crossfade(crossfadeTimer, SceneManager.GetActiveScene().buildIndex + 1));
     }
 
-    public void RestartLevel()
+    public void RestartLevel(int crossfadeTimer)
     {
-        StartCoroutine(Crossfade(SceneManager.GetActiveScene().buildIndex));  
+        StartCoroutine(Crossfade(crossfadeTimer, SceneManager.GetActiveScene().buildIndex));
     }
 
-    public void LoadMainMenu()
+    public void LoadMainMenu(int crossfadeTimer)
     {
-        StartCoroutine(Crossfade(0));
+        StartCoroutine(Crossfade(crossfadeTimer, 0));
     }
 
-    IEnumerator Crossfade(int sceneIndex)
+    IEnumerator Crossfade(int crossfadeTimer, int sceneIndex)
     {
         //play crossfade animation
         if(anim != null)
         {
-            anim.SetTrigger(_crossfadeTrigger);
+            anim.SetTrigger(_crossfadeOut);
         }
         //wait
-        yield return new WaitForSeconds(crossfadeTime);
-
+        Debug.Log("Wait");
+        yield return new WaitForSeconds(crossfadeTimer);
+        Debug.Log("Switch");
         SceneManager.LoadScene(sceneIndex);
     }
 }

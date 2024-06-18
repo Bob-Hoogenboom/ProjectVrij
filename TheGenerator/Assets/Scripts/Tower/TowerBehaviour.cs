@@ -129,7 +129,7 @@ public class TowerBehaviour : MonoBehaviour
         }
     }
 
-    private void DeactivateLight()
+    public void DeactivateLight()
     {
         //deactivate light
         searchLight.SetActive(false);
