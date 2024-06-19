@@ -42,6 +42,7 @@ public class InputManager : MonoBehaviour
     }
 
     #region HelperFunctions
+
     public Vector2 GetMoveVector()
     {
         return _playerActions.Movement.Move.ReadValue<Vector2>();
